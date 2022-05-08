@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<title> Three.js/WebGL Project by Andrew Mastrolia</title>
+<h2 style="color: black;"><b> Three.js/WebGL Project by Andrew Mastrolia</b></h2>
+<body style="background-color:dimgray;">
+  <script src="https://cdn.jsdelivr.net/npm/three@0.140.0/build/three.min.js" integrity="sha256-y7KfeUALk5kOlYA87DyOefpxLaWirywFAsQUH0scyy0=" crossorigin="anonymous"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.140.0/build/three.module.js"
+      }
+    }
+  </script>
+  <script type="module">
+
+    import * as THREE from 'three'; 
+    import {OrbitControls} from 'https://cdn.jsdelivr.net/npm/three@0.140.0/examples/jsm/controls/OrbitControls.js';
+    const controls = new OrbitControls( camera, renderer.domElement );
+
+    import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.140.0/examples/jsm/loaders/GLTFLoader.js';
+    const loader = new GLTFLoader();
+
+    loader.load( 'sphinx/scene.gltf', function ( gltf ) {
+      let sphinx=gltf.scene.children[0];
+      sphinx.position.set(-30,-2,60); 
+      sphinx.scale.set(0.85,0.85,0.85); 
+      scene.add( gltf.scene );
+    });
+
+    loader.load( 'sphinx/scene.gltf', function ( gltf ) {
+      let sphinx=gltf.scene.children[0];
+      sphinx.position.set(20,-2,60); 
+      sphinx.scale.set(0.85,0.85,0.85); 
+      scene.add( gltf.scene );
+    });
+  </script>
+
+  <canvas id="bg"></canvas>
+  <input type="checkbox" id="rotate">
+  <label for="checkbox"><b>Rotate Model</b></label>
+  <script type="text/javascript" src="main.js"></script>
+</body>
+</html>
+
+
